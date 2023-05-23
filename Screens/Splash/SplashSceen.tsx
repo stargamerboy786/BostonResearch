@@ -1,0 +1,54 @@
+import React, {useEffect} from 'react';
+import {View, Image, Text, StyleSheet, Dimensions} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+
+const {width, height} = Dimensions.get('window');
+
+const SplashScreen = () => {
+  const navigation = useNavigation();
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      navigation.navigate('SwiperFile'); // Replace 'NextScreen' with the name of your target screen
+    }, 5000);
+
+    return () => clearTimeout(timeout);
+  }, [navigation]);
+
+  return (
+    <View style={styles.container}>
+      <View style={styles.logoContainer}>
+        <Image source={require('../../assets/logo.png')} />
+      </View>
+      <View style={styles.versionContainer}>
+        <Text style={styles.versionText}>Version 1.0.0</Text>
+      </View>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  logoContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  logoImage: {
+    width: width * 0.8,
+    height: height * 0.4,
+  },
+  versionContainer: {
+    marginBottom: height * 0.05,
+  },
+  versionText: {
+    fontSize: 16,
+    color: 'gray',
+  },
+});
+
+export default SplashScreen;
