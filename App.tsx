@@ -5,6 +5,7 @@ import SplashScreen from '../MyProject/Screens/Splash/SplashSceen';
 import LoginScreen from '../MyProject/Screens/Login/LoginScreen';
 import SwiperFile from './Screens/OnBoardingScreen/SwiperFile';
 import Dashboard from './Screens/Dashboard/Dashboard';
+import ViewFile from './Screens/Dashboard/ViewFile';
 
 const Stack = createStackNavigator();
 
