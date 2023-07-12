@@ -5,14 +5,17 @@ import SplashScreen from '../MyProject/Screens/Splash/SplashSceen';
 import LoginScreen from '../MyProject/Screens/Login/LoginScreen';
 import SwiperFile from './Screens/OnBoardingScreen/SwiperFile';
 import Dashboard from './Screens/Dashboard/Dashboard';
-import ViewFile from './Screens/Dashboard/ViewFile';
 
 const Stack = createStackNavigator();
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Splash">
+      <Stack.Navigator
+        initialRouteName="Splash"
+        screenOptions={{
+          headerShown: false,
+        }}>
         <Stack.Screen name="Splash" component={SplashScreen} />
         <Stack.Screen name="SwiperFile" component={SwiperFile} />
         <Stack.Screen name="Login" component={LoginScreen} />

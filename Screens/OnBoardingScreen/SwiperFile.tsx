@@ -1,6 +1,4 @@
-/* eslint-disable react-native/no-inline-styles */
 import {
-  Button,
   Image,
   SafeAreaView,
   StyleSheet,
@@ -14,27 +12,21 @@ import {useNavigation} from '@react-navigation/native';
 
 const SwiperFile = () => {
   const navigation = useNavigation();
-  // loginnavigation = () => {
-  //   navigation.navigate('Login');
-  // };
 
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
+    <SafeAreaView style={styles.safearea}>
       <View style={styles.swiperview}>
         <Swiper
           activeDotColor="black"
           showsButtons={false}
-          dotStyle={{top: 35}}
-          activeDotStyle={{top: 35}}
+          dotStyle={styles.dotstyles}
+          activeDotStyle={styles.dotstyles}
           autoplay>
           <View style={styles.slide1}>
             <Image
               source={require('../../assets/onboardingimages.png')}
               resizeMode="stretch"
-              style={{
-                width: '100%',
-                height: 520,
-              }}
+              style={styles.contimage1}
             />
             <Text style={styles.title}>
               Research Publication Is Now Much Better
@@ -48,10 +40,7 @@ const SwiperFile = () => {
             <Image
               source={require('../../assets/onboardingimages1.png')}
               resizeMode="stretch"
-              style={{
-                width: '100%',
-                height: 520,
-              }}
+              style={styles.contimage1}
             />
             <Text style={styles.title}>
               Stay Informed On Latest Research News
@@ -60,15 +49,11 @@ const SwiperFile = () => {
               Stay informed with the latest news from around the world.
             </Text>
           </View>
-          <View style={styles.slide1}>
+          <View style={styles.slide2}>
             <Image
               source={require('../../assets/onboardingimages2.png')}
               resizeMode="stretch"
-              style={{
-                alignSelf: 'center',
-                width: '90%',
-                height: 520,
-              }}
+              style={styles.contimage2}
             />
             <Text style={styles.title}>Get Updates On What’s Happening</Text>
             <Text style={styles.description}>
@@ -94,34 +79,49 @@ const SwiperFile = () => {
 
 export default SwiperFile;
 const styles = StyleSheet.create({
+  safearea: {flex: 1, backgroundColor: '#fff'},
   swiperview: {
     height: '70%',
     width: '100%',
-    // borderWidth: 1
+  },
+  dotstyles: {
+    top: 35,
+    marginLeft: 10,
+    height: 10,
+    width: 10,
+    borderRadius: 10,
+  },
+  contimage1: {
+    width: '100%',
+    height: 520,
+  },
+  contimage2: {
+    alignSelf: 'center',
+    width: '90%',
+    height: 480,
   },
 
   slide1: {
-    // flex: 1,
-    // justifyContent: 'center',
-    // alignItems: 'center',
     backgroundColor: 'white',
-    // borderWidth: 1
+  },
+  slide2: {
+    marginTop: 30,
+    backgroundColor: 'white',
   },
   title: {
+    fontFamily: 'PlayfairDisplay-Bold',
     marginTop: 10,
     color: 'black',
-    // marginTop: '3%',
-    fontStyle: 'normal',
-    fontWeight: '700',
-    fontSize: 36,
+    fontSize: 42,
     textAlign: 'center',
   },
   description: {
+    fontFamily: 'Manrope-Regular',
     marginTop: 5,
     justifyContent: 'center',
     paddingHorizontal: 20,
-    fontSize: 20,
-    color: 'black',
+    fontSize: 21,
+    color: '#969696',
     textAlign: 'center',
     marginBottom: 4,
   },
@@ -129,14 +129,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 18,
     color: 'black',
-    // fontWeight: "bold",
-    fontFamily: 'Montserrat-SemiBold',
+    fontFamily: 'PlayfairDisplay-Italic',
     marginTop: 5,
   },
   googleboxview: {
     width: '86%',
     height: 90,
-    // borderWidth: 1,
     alignSelf: 'center',
     marginTop: 20,
     flexDirection: 'row',
@@ -146,18 +144,12 @@ const styles = StyleSheet.create({
     height: 80,
     width: 80,
   },
-  calenderText: {
-    textAlign: 'center',
-    color: 'grey',
-    fontSize: 14,
-    marginTop: 15,
-    fontFamily: 'Montserrat-Regular',
-  },
   privacybox: {
+    fontFamily: 'Manrope-Bold',
     backgroundColor: 'rgb(41,90,236)',
     width: '90%',
     borderRadius: 10,
-    height: 60,
+    height: 70,
     alignSelf: 'center',
     alignItems: 'center',
     marginTop: 50,
@@ -165,11 +157,11 @@ const styles = StyleSheet.create({
   },
   started: {
     borderColor: 'black',
-    borderWidth: 1,
+    borderWidth: 1.5,
     backgroundColor: 'white',
     width: '90%',
     borderRadius: 10,
-    height: 60,
+    height: 70,
     alignSelf: 'center',
     alignItems: 'center',
     marginTop: 30,
@@ -178,16 +170,17 @@ const styles = StyleSheet.create({
   privacytext: {
     color: 'white',
     fontSize: 20,
-    top: 20,
+    top: 15,
     textAlign: 'center',
-    fontFamily: 'Montserrat-Regular',
+    fontFamily: 'Manrope-Bold',
   },
   privacytext1: {
     color: 'black',
-    fontSize: 16,
-    top: 20,
-    textAlign: 'center',
-    fontFamily: 'Montserrat-Regular',
+    fontSize: 20,
+    top: 14,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    fontFamily: 'Manrope-Bold',
   },
   loaderview: {
     flex: 1,

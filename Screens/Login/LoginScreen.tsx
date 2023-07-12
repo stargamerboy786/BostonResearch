@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
 import {
   Image,
   ScrollView,
@@ -16,7 +15,7 @@ import {useNavigation} from '@react-navigation/native';
 const LoginScreen = () => {
   const navigation = useNavigation();
   return (
-    <ScrollView keyboardShouldPersistTaps="always" style={{flex: 1}}>
+    <ScrollView keyboardShouldPersistTaps="always" style={styles.container}>
       <StatusBar />
       <View style={styles.upperView}>
         <Image
@@ -35,38 +34,25 @@ const LoginScreen = () => {
           // onChangeText={handleChange('password')}
           // value={values.password}
         />
-        <Text style={[styles.heading1]}>Password</Text>
+        <Text style={[styles.heading2]}>Password</Text>
         <TextInput
           style={styles.textinput1}
-          placeholder="Password"
+          placeholder="Input your password account"
           placeholderTextColor="grey"
           // onChangeText={handleChange('password')}
           // value={values.password}
         />
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            marginTop: 5,
-          }}>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+        <View style={styles.checkbox}>
+          <View style={styles.checkbox1}>
             <CheckBox
               value={true}
               // onValueChange={}
               // tintColors={{true: 'blue', false: 'grey'}}
             />
-            <Text style={{fontSize: 18, color: 'grey'}}>Remember me?</Text>
+            <Text style={styles.rememberme}>Remember me</Text>
           </View>
           <TouchableOpacity>
-            <Text
-              style={{
-                color: 'grey',
-                fontSize: 18,
-                fontWeight: 'normal',
-              }}>
-              Forgot password?
-            </Text>
+            <Text style={styles.forgotpass}>Forgot password?</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -75,22 +61,12 @@ const LoginScreen = () => {
         <TouchableOpacity
           onPress={() => navigation.navigate('Dashboard')}
           style={styles.loginButton}>
-          <Text style={{fontWeight: 'bold', fontSize: 20}}>Login</Text>
+          <Text style={styles.login}>Login</Text>
         </TouchableOpacity>
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            alignSelf: 'center',
-            marginTop: 15,
-          }}>
-          <Text style={{color: 'grey', fontSize: 19, marginHorizontal: 5}}>
-            Don’t have an account?
-          </Text>
+        <View style={styles.dontaccount}>
+          <Text style={styles.dontaccount1}>Don’t have an account?</Text>
           <TouchableOpacity>
-            <Text style={{color: 'black', fontWeight: 'bold', fontSize: 19}}>
-              Create Account
-            </Text>
+            <Text style={styles.createacc}>Create Account</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -100,7 +76,48 @@ const LoginScreen = () => {
 
 export default LoginScreen;
 const styles = StyleSheet.create({
-  // Customizable Area Start
+  container: {flex: 1},
+  checkbox: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: 5,
+  },
+  createacc: {
+    color: 'black',
+    fontSize: 19,
+    fontFamily: 'Manrope-Bold',
+  },
+  login: {
+    fontWeight: 'bold',
+    fontSize: 20,
+    fontFamily: 'Manrope-Bold',
+    color: '#FFFFFF',
+  },
+  checkbox1: {flexDirection: 'row', alignItems: 'center'},
+  rememberme: {
+    fontSize: 18,
+    color: 'grey',
+    fontFamily: 'Manrope-Medium',
+  },
+  dontaccount: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignSelf: 'center',
+    marginTop: 15,
+  },
+  dontaccount1: {
+    color: 'grey',
+    fontSize: 19,
+    marginHorizontal: 5,
+    fontFamily: 'Manrope-Medium',
+  },
+  forgotpass: {
+    color: 'grey',
+    fontSize: 18,
+    fontWeight: 'normal',
+    fontFamily: 'Manrope-Medium',
+  },
   upperView: {
     backgroundColor: 'white',
     height: 500,
@@ -108,38 +125,43 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   logoStyle: {
-    //  height:'60%'
     height: '200%',
     width: '100%',
   },
   middleView: {
     backgroundColor: 'white',
-    height: 300,
+    height: 320,
     width: '85%',
-    elevation: 2,
+    // elevation: 1,
     alignSelf: 'center',
     marginTop: -25,
     borderRadius: 10,
-    padding: 20,
-    // marginHorizontal: 20,
+    padding: 25,
   },
   heading1: {
-    // margint: 20,
+    fontFamily: 'Manrope-Medium',
     color: 'black',
-    fontSize: 20,
+    fontSize: 18,
+  },
+  heading2: {
+    fontFamily: 'Manrope-Medium',
+    color: 'darkgray',
+    fontSize: 18,
   },
   textinput1: {
     color: 'black',
+    width: '100%',
     marginVertical: 10,
-    // marginHorizontal: 20,
     padding: 20,
     borderWidth: 0.5,
     borderColor: 'grey',
     borderRadius: 10,
+    alignSelf: 'center',
+    fontFamily: 'Manrope-Medium',
+    fontSize: 18,
   },
   lowerView: {
-    marginTop: 40,
-    // paddingTop: 20
+    marginTop: 60,
   },
   loginButton: {
     backgroundColor: 'rgb(41,90,236)',
@@ -152,7 +174,6 @@ const styles = StyleSheet.create({
   newUserText: {
     marginTop: 5,
     color: 'black',
-    // marginLeft: 20,
     fontSize: 18,
   },
   createAccountText: {
@@ -162,8 +183,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   inputBox: {
-    // marginLeft: 20,
-    // marginRight: 20,
     borderBottomWidth: 1,
     marginTop: 20,
     borderBottomColor: 'grey',
@@ -202,7 +221,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   helpText: {
-    // marginLeft: 20,
     marginTop: 20,
     color: '#0A4D68',
     fontWeight: 'bold',
@@ -219,12 +237,10 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     width: '45%',
     borderColor: 'grey',
-    // marginHorizontal: 15
   },
   continueText: {
     fontSize: 16,
     fontWeight: 'bold',
     color: 'grey',
-    // fontFamily:FONTS.MontserratBold
   },
 });

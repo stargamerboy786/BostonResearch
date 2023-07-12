@@ -1,50 +1,14 @@
+/* eslint-disable react-native/no-inline-styles */
 import {
   View,
   Text,
   StyleSheet,
   FlatList,
   Image,
-  Touchable,
   TouchableOpacity,
 } from 'react-native';
-import React, {useState} from 'react';
-import {parseString} from 'react-native-xml2js';
-
+import React from 'react';
 export default function Dashboard() {
-  const [value, setValue] = useState([]);
-
-  const parseXMLToJson = async xml => {
-    return new Promise((resolve, reject) => {
-      parseString(xml, (err, result) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(result);
-        }
-      });
-    });
-  };
-
-  const apiCalling = async () => {
-    try {
-      const apiUrl = 'https://bostonresearch.org/feed/?post_type=news';
-      const response = await fetch(apiUrl);
-      if (response.ok) {
-        const text = await response.text();
-        const jsonData = await parseXMLToJson(text);
-        const jsonItemVlaues = jsonData.rss.channel[0].item;
-        console.log('Json data', jsonItemVlaues);
-        const jsonDataItem = await parseXMLToJson(jsonItemVlaues);
-        console.log('Json data updated ', jsonDataItem);
-      } else {
-        throw new Error('API request failed');
-      }
-    } catch (error) {
-      // Handle any errors
-      console.error(error);
-    }
-  };
-
   const FlatlistValue = [
     {
       topic:
@@ -130,7 +94,13 @@ export default function Dashboard() {
               source={require('../../assets/Ellipse2.png')}
               style={styles.imagebox1}
             />
-            <Text style={{color: 'black', fontSize: 20, marginLeft: 10}}>
+            <Text
+              style={{
+                color: 'black',
+                fontSize: 20,
+                marginLeft: 10,
+                fontFamily: 'Manrope-SemiBold',
+              }}>
               Scott Jhonson
             </Text>
           </View>
@@ -157,15 +127,15 @@ export default function Dashboard() {
               {item.item.timeread}·{item.item.uploadedate}
             </Text>
             <TouchableOpacity>
-            <Text
-              style={{
-                marginRight: 5,
-                color: 'grey',
-                fontSize: 40,
-                fontWeight: 'bold',
-              }}>
-              ···
-            </Text>
+              <Text
+                style={{
+                  marginRight: 5,
+                  color: 'grey',
+                  fontSize: 40,
+                  fontWeight: 'bold',
+                }}>
+                ···
+              </Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -215,14 +185,13 @@ const styles = StyleSheet.create({
     color: 'white',
     marginHorizontal: 25,
     fontSize: 40,
-    fontWeight: 'bold',
     justifyContent: 'space-around',
+    fontFamily: 'PlayfairDisplay-Bold',
   },
   image: {width: 220, height: 230},
   image1: {
     width: 100,
     height: 100,
-    // marginRight: 10,
     marginLeft: 37,
   },
   flatlistview: {
@@ -230,17 +199,25 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: 'black',
   },
-  author: {marginLeft: 10, fontSize: 18, fontWeight: 'bold'},
+  author: {
+    marginLeft: 10,
+    fontSize: 18,
+    fontWeight: 'bold',
+    fontFamily: 'Manrope-SemiBold',
+    color: 'white',
+  },
   author1: {marginLeft: 15, fontSize: 18, fontWeight: 'bold', color: 'black'},
   timeout: {
-    color: 'grey',
+    fontFamily: 'Manrope-Regular',
+    color: 'darkgray',
     marginTop: 7,
     fontSize: 14,
     fontWeight: 'normal',
     alignContent: 'center',
   },
   timeout1: {
-    color: 'grey',
+    fontFamily: 'Manrope-Regular',
+    color: 'darkgrey',
     fontSize: 17,
     fontWeight: 'normal',
   },
@@ -249,20 +226,20 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: 'grey',
     marginTop: 10,
+    fontFamily: 'Manrope-Regular',
   },
   topic: {
+    fontFamily: 'Manrope-Bold',
     color: 'white',
     fontSize: 20,
-    fontWeight: 'bold',
     marginTop: 13,
   },
   topic1: {
+    fontFamily: 'Manrope-Bold',
     width: '70%',
-    // marginLeft: 25,
     color: 'black',
     fontSize: 22,
     fontWeight: '600',
-    // marginTop: 10,
   },
   box1: {width: 220, height: 230},
   box2: {width: 220, height: 230, flexDirection: 'row'},
@@ -276,10 +253,7 @@ const styles = StyleSheet.create({
   renderItemView1: {
     backgroundColor: 'white',
     padding: 25,
-    // paddingBottom:1,
     marginBottom: 1,
     elevation: 0.5,
-    // height: 300,
-    // width: '100%',
   },
 });

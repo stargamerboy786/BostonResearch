@@ -9,7 +9,7 @@ const SplashScreen = () => {
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      navigation.navigate('SwiperFile'); // Replace 'NextScreen' with the name of your target screen
+      navigation.navigate('SwiperFile');
     }, 5000);
 
     return () => clearTimeout(timeout);
@@ -46,8 +46,9 @@ const styles = StyleSheet.create({
     marginBottom: height * 0.05,
   },
   versionText: {
+    fontFamily: 'Manrope-Regular',
     fontSize: 16,
-    color: 'gray',
+    color: 'darkgray',
   },
 });
 
